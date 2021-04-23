@@ -1,22 +1,32 @@
 package steps;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.pt.Entao;
-import org.junit.Assert;
-import pages.RestricoesPage;
+import static org.hamcrest.Matchers.equalTo;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
 
 public class RestricoesSteps {
 
-	private RestricoesPage restricoesPage = new RestricoesPage();
+	private String baseUrl = "http://localhost:8080/";
+	private Response response;
 
 	@Entao("^realiza a consulta se o CPF \"([^\"]*)\" possui ou nao restricao$")
 	public void realizarConsultaCPFPossuiRestricao(String CPF) {
-		Assert.assertTrue("Erro ao consultar se o CPF "+CPF+" possui ou nao restricao", restricoesPage.realizarConsultaCPFPossuiRestricao(CPF));
+		given()
+		.get(baseUrl+"api/v1/restricoes/"+CPF)
+		.then()
+		.assertThat()
+		.statusCode(200)
+		.body("mensagem", equalTo("O CPF "+CPF+" tem problema"));
 	}
 
 	@Entao("^realiza a consulta se o CPF invalido \"([^\"]*)\" possui ou nao restricao$")
 	public void realizarConsultaCPFInvalidoPossuiRestricao(String CPF)  {
-		Assert.assertTrue("Erro ao consultar se o CPF invalido "+CPF+" possui ou nao restricao", restricoesPage.realizaConsultaCPFInvalidoPossuiRestricao(CPF));
-
+		given()
+		.get(baseUrl+"api/v1/restricoes/"+CPF)
+		.then()
+		.assertThat()
+		.statusCode(204);
 	}
 }

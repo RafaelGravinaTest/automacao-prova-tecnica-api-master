@@ -2,7 +2,7 @@
 #encoding: iso-8859-1
 Funcionalidade: Simulacoes
 
-  @ProvaTecnicaAPIMaster @Simulacoes
+  @ProvaTecnicaAPIMaster @Simulacoes @teste
   Cenario: Consulta todas as simulacoes existentes
     Entao realiza a consulta de todas as simulacoes existentes
 
@@ -18,10 +18,6 @@ Funcionalidade: Simulacoes
   Cenario: Alterar uma simulacao pelo CPF
     Entao realiza a alteracao de uma simulacao pelo CPF
 
-  @ProvaTecnicaAPIMaster @Simulacoes
-  Cenario: Remover uma simulacao pelo ID
-    Entao realiza a remocao de uma simulacao pelo ID
-
   #Cenarios Invalidos
   @ProvaTecnicaAPIMaster @Simulacoes
   Cenario: Inserir uma nova simulacao com payload invalido
@@ -36,13 +32,14 @@ Funcionalidade: Simulacoes
     Entao realiza a consulta de simulacoes de um CPF invalido
 
   @ProvaTecnicaAPIMaster @Simulacoes
-  Cenario: Alterar uma simulacao por um CPF inexistente
-    Entao realiza a alteracao de uma simulacao por um CPF inexistente
-
-  @ProvaTecnicaAPIMaster @Simulacoes
   Cenario: Alterar uma simulacao pelo CPF para um CPF ja existente
     Entao realiza a alteracao de uma simulacao pelo CPF para um CPF ja existente
 
   @ProvaTecnicaAPIMaster @Simulacoes
-  Cenario: Remover uma simulacao com ID invalido
-    Entao realiza a remocao de uma simulacao com ID invalido
+  Cenario: Alterar uma simulacao por um CPF inexistente
+    Entao realiza a alteracao de uma simulacao por um CPF inexistente
+
+  ##Remocao da simulação criada
+  @ProvaTecnicaAPIMaster @Simulacoes
+  Cenario: Remover uma simulacao pelo ID
+    Entao realiza a remocao de uma simulacao pelo ID
